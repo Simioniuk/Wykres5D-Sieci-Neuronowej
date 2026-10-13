@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://poq62pdtsjvu"]
+
+[ext_resource type="Script" uid="uid://uoicxabu87tr" path="res://render.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cldhpobsmgt5j" path="res://camera_controller.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://dyhsb0ffg65mx" path="res://uiController.gd" id="3_h2yge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+vertex_color_use_as_albedo = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+material = SubResource("StandardMaterial3D_0xm2m")
+
+[sub_resource type="MultiMesh" id="MultiMesh_dv74u"]
+transform_format = 1
+use_colors = true
+mesh = SubResource("BoxMesh_0xm2m")
+
+[sub_resource type="Environment" id="Environment_dv74u"]
+background_mode = 1
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=671626493]
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=948953416]
+multimesh = SubResource("MultiMesh_dv74u")
+script = ExtResource("1_ig7tw")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=294719257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.24349827)
+script = ExtResource("2_0xm2m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1682613057]
+environment = SubResource("Environment_dv74u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1867037647]
+transform = Transform3D(1, 0, 0, 0, -0.1719589, 0.98510414, 0, -0.98510414, -0.1719589, 0, 2.6286297, -0.74837506)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DirectionalLight3D" unique_id=1444818859]
+transform = Transform3D(1, 0, 0, 0, -0.1719589, 0.9851042, 0, -0.9851042, -0.1719589, 0, 2.9819174, -2.7722597)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DirectionalLight3D/DirectionalLight3D" unique_id=1168925794]
+transform = Transform3D(1, 0, 0, 0, -0.17195892, 0.9851042, 0, -0.9851042, -0.17195892, 0, 3.3207123, -3.7131205)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DirectionalLight3D/DirectionalLight3D/DirectionalLight3D" unique_id=526426184]
+transform = Transform3D(1, 0, 0, 0, -0.17195892, 0.9851042, 0, -0.9851042, -0.17195892, 0, 3.3207123, -3.7131205)
+
+[node name="Control" type="Control" parent="." unique_id=1644888867]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 229.0
+offset_bottom = 98.0
+script = ExtResource("3_h2yge")
+
+[node name="wLabel" type="Label" parent="Control" unique_id=330631980]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="uLabel" type="Label" parent="Control" unique_id=673062651]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 24.0
+offset_right = 39.0
+offset_bottom = 47.0
